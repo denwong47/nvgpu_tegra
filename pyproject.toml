@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nvgpu_tegra"
+authors = [
+    {name = "Bohumir Zamecnik, Rossum", email = "bohumir.zamecnik@rossum.ai"},
+    {name = "Denny Wong", email = "denwong47@hotmail.com"},
+]
+version = "0.10.0+tegra"
+description = "NVIDIA GPU tools - for Tegra/Jetson Nano"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    'Development Status :: 3 - Alpha',
+
+    'Intended Audience :: Developers',
+    'Intended Audience :: Science/Research',
+
+    'License :: OSI Approved :: MIT License',
+
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: Implementation :: CPython',
+
+    'Operating System :: POSIX :: Linux',
+]
+dependencies= [
+    'ansi2html',
+    'arrow',
+    'flask',
+    'flask_restful',
+    'nvidia-ml-py; python_version < "3"',
+    'nvidia-ml-py3; python_version >= "3" and python_version < "3.6"',
+    'pynvml; python_version >= "3.6"',
+    'pandas',
+    'psutil',
+    'requests',
+    'six',
+    'termcolor',
+    'tabulate',
+]
+
+[project.urls]
+repository = "https://github.com/denwong47/nvgpu_tegra"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.isort]
+py_version = 39
+profile = "black"
+sections=[
+    "FUTURE",
+    "STDLIB",
+    "THIRDPARTY",
+    "FIRSTPARTY",
+    "LOCALFOLDER",
+]
+known_third_party = []
+
+[tool.pyright]
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "local: marks tests as only intended to be run locally as opposed to e.g. on GitHub actions",
+]
